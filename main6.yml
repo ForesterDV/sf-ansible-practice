@@ -1,0 +1,13 @@
+# Homework part 6
+- name: vm1 tasks
+  hosts: vm1
+  become: true
+  roles:
+   - http
+   - users
+- name: vm2 tasks
+  hosts: vm2
+  become: true
+  roles:
+   - php
+   - users

@@ -1,0 +1,7 @@
+- name: Homework part 5
+  hosts: yacloud
+  become: true
+  roles:
+   - php
+   - http
+   - users

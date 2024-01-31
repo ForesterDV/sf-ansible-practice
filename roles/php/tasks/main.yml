@@ -1,0 +1,18 @@
+---
+# tasks file for php
+- name: Php-fpm
+  ansible.builtin.apt:
+   name: php{{ php_version }}-fpm
+   state: present
+   update_cache: true
+
+- name: Change config
+  ansible.builtin.template:
+   src: www_config.j2
+   mode: '0o644'
+   dest: /etc/php/{{ php_version }}/fpm/pool.d/www.conf
+
+- name: Restart php-fpm
+  ansible.builtin.service:
+   name: php{{ php_version }}-fpm
+   state: restarted
